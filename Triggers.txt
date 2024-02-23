@@ -1,0 +1,84 @@
+//Insert Triggers
+
+CREATE OR REPLACE TRIGGER T_Customers
+
+BEFORE INSERT ON Customers
+
+FOR EACH ROW
+
+ENABLE
+
+DECLARE
+
+v_user VARCHAR2 (20);
+
+BEGIN
+
+SELECT user INTO v user FROM dual;
+
+END;
+
+DBMS OUTPUT.PUT_LINE ('You Just Inserted A Line Mr. '||v_user);
+
+//Update triggers
+
+CREATE OR REPLACE TRIGGER T_Customers
+
+BEFORE UPDATE ON Customers
+
+FOR EACH ROW
+
+ENABLE
+
+DECLARE
+
+v_user VARCHAR2 (20);
+
+BEGIN
+
+SELECT user INTO v user FROM dual;
+
+END;
+
+DBMS OUTPUT.PUT_LINE ('You Just Updated A Line Mr. '||v_user);
+
+//Delete Triggers
+
+CREATE OR REPLACE TRIGGER T_Customers
+
+BEFORE DELETE ON Customers
+
+FOR EACH ROW
+
+ENABLE
+
+DECLARE
+
+v_user VARCHAR2 (20);
+
+BEGIN
+
+SELECT user INTO v user FROM dual;
+
+END;
+
+DBMS OUTPUT.PUT_LINE ('You Just Deleted A Line Mr. '||v_user);
+
+//Backup Table
+
+CREATE OR REPLACE TRIGGER Cust_b
+
+BEFORE INSERT ON Cust_b
+
+FOR EACH ROW
+
+ENABLE
+
+DECLARE
+
+v_user VARCHAR2 (20);
+
+BEGIN
+INSERT INTO Cust_b values (:old.CustomerId, :old.FirstName, :old.LastName, :old.Email, :old.PhoneNumber 'previous record');
+
+END;
